@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {View, Text, StyleSheet, Button, Image, TouchableOpacity} from 'react-native';
 
 import Constants from 'expo-constants';
@@ -6,7 +6,12 @@ import Constants from 'expo-constants';
 import Header from './Header'
 import BotaoCustomizado from './BotaoCustomizado'
 
-export default () => {
+export default ({navigation, route}) => {
+
+  useEffect(() => {
+    console.log('Tela home iniciada')
+  }, [])
+
   return (
     <View style={styles.viewMain}>
       {/* Este é o cabeçalho */}
@@ -15,7 +20,7 @@ export default () => {
         <BotaoCustomizado 
           titulo='SOS'
           cor='red'
-          acao={() => alert('SOS')}
+          acao={() => navigation.navigate("lista-contatos")}
         />
         <BotaoCustomizado 
           titulo='Registro'
@@ -24,7 +29,7 @@ export default () => {
 
         <BotaoCustomizado 
           titulo='Rastreio'
-          acao={() => alert('Rastreio')}
+          acao={() => navigation.navigate('rastreio')}
         />
 
         {/* 
